@@ -1,5 +1,7 @@
 
-export function isUTCDateStringFuture(dateString: string);
+import { NativeEventEmitter, NativeModules, Platform } from "react-native";
+
+export function isUTCDateStringFuture(dateString: string): void;
 
 declare namespace Purchases {
 
@@ -17,25 +19,25 @@ declare namespace Purchases {
      * If a user tries to purchase a product that is active on the current app store account, we will treat it as a restore and alias
      * the new ID with the previous id.
      */
-    export function setAllowSharingStoreAccount(allowSharing: boolean);
+    export function setAllowSharingStoreAccount(allowSharing: boolean): void;
 
     /**
     * Set finishTransactions to false if you aren't using Purchases SDK to make the purchase
     */
-    export function setFinishTransactions(finishTransactions: boolean)
+    export function setFinishTransactions(finishTransactions: boolean): void;
 
     /**
     * Sets a function to be called on updated purchaser info
     * @param {PurchaserInfoUpdateListener} purchaserInfoUpdateListener PurchaserInfo update listener
     */
-    export function addPurchaserInfoUpdateListener(purchaserInfoUpdateListener: any);
+    export function addPurchaserInfoUpdateListener(purchaserInfoUpdateListener: any): void;
 
     /**
      * Removes a given PurchaserInfoUpdateListener
      * @param {PurchaserInfoListener} listenerToRemove PurchaserInfoListener reference of the listener to remove
      * @returns {boolean} True if listener was removed, false otherwise
      */
-    export function removePurchaserInfoUpdateListener(listenerToRemove: any);
+    export function removePurchaserInfoUpdateListener(listenerToRemove: any): void;
 
     /**
      * Enum for attribution networks
@@ -49,7 +51,7 @@ declare namespace Purchases {
         BRANCH,
         TENJIN,
         FACEBOOK
-    };
+    }
 
     /**
      * Add a dict of attribution information
@@ -57,32 +59,32 @@ declare namespace Purchases {
      * @param {ATTRIBUTION_NETWORKS} network Which network, see Purchases.ATTRIBUTION_NETWORKS
      * @param {string?} networkUserId An optional unique id for identifying the user. Needs to be a string.
      */
-    export function addAttributionData(data: any, network: ATTRIBUTION_NETWORKS, networkUserId?: string);
+    export function addAttributionData(data: any, network: ATTRIBUTION_NETWORKS, networkUserId?: string): void;
 
     /**
      * Gets the map of entitlements -> offerings -> products
      * @returns {Promise<Map<String, Map<String, Product>>>} Promise of entitlements structure
      */
-    export function getEntitlements(): Promise<Map<string, Map<string, Product>>>;
+    export function getEntitlements(): Promise<Map<string, Map<string, any>>>;
 
     /**
     * Fetch the product info
     * @param {[string]} productIdentifiers Array of product identifiers
-    * @param {string?} type Optional type of products to fetch, can be inapp or subs. Subs by default
+    * @param {string?} type Optional type of products to fetch, can be inapp or subs. "subs" by default
     * @returns {Promise<Array>} A promise containing an array of products. The promise will be rejected if the products are not properly
     * configured in RevenueCat or if there is another error retrieving them. Rejections return an error code, and a userInfo object with more information.
     */
-    export function getProducts(productIdentifiers: string[], type?: string = "subs"): Promise<Array>;
+    export function getProducts(productIdentifiers: string[], type?: string): Promise<Array<any>>;
 
     /**
     * Make a purchase
     * @param {string} productIdentifier The product identifier of the product you want to purchase
     * @param {string?} oldSKU Optional sku you wish to upgrade from.
-    * @param {string?} type Optional type of product, can be inapp or subs. Subs by default
+    * @param {string?} type Optional type of product, can be inapp or subs. "subs" by default
     * @returns {Promise<any>} A promise of an object containing a purchaser info object and a product identifier. Rejections return an error code,
     * and a userInfo object with more information and a boolean indicating if the user cancelled the purchase.
     */
-    export function makePurchase(productIdentifier: string, oldSKU: string?, typestring?= "subs"): Promise<any>;
+    export function makePurchase(productIdentifier: string, oldSKU?: string, typestring?: string): Promise<any>;
 
     /**
     * Restores a user's previous purchases and links their appUserIDs to any user's also using those purchases.
@@ -108,7 +110,7 @@ declare namespace Purchases {
      * @param {string} newAppUserID The appUserID that should be linked to the currently user
      * @returns {Promise<any>} A promise of a purchaser info object. Rejections return an error code, and a userInfo object with more information.
      */
-    export function identify(newAppUserID): Promise<any>;
+    export function identify(newAppUserID: string): Promise<any>;
 
     /**
      * Resets the Purchases client clearing the saved appUserID. This will generate a random user id and save it in the cache.
@@ -120,7 +122,7 @@ declare namespace Purchases {
      * Enables/Disables debugs logs
      * @param {boolean} enabled Enable or not debug logs
      */
-    export function setDebugLogsEnabled(enabled);
+    export function setDebugLogsEnabled(enabled: boolean): void;
 
     /**
      * Gets current purchaser info
@@ -134,11 +136,11 @@ declare namespace Purchases {
      *
      * @warning This function should only be called if you're not calling makePurchase.
      */
-    export function syncPurchases();
+    export function syncPurchases(): void;
 
     /**
      * Enable automatic collection of Apple Search Ad attribution. Disabled by default
      * @param {boolean} enabled Enable or not automatic apple search ads attribution collection
      */
-    export function setAutomaticAppleSearchAdsAttributionCollection(enabled: boolean);
+    export function setAutomaticAppleSearchAdsAttributionCollection(enabled: boolean): void;
 }
