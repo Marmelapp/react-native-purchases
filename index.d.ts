@@ -1,8 +1,4 @@
 
-import { NativeEventEmitter, NativeModules, Platform } from "react-native";
-
-export function isUTCDateStringFuture(dateString: string): void;
-
 declare namespace Purchases {
 
     /**
@@ -144,3 +140,5 @@ declare namespace Purchases {
      */
     export function setAutomaticAppleSearchAdsAttributionCollection(enabled: boolean): void;
 }
+
+export = Purchases;
