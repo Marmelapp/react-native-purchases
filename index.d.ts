@@ -1,9 +1,10 @@
-
 declare namespace Purchases {
 
+    export function isUTCDateStringFuture(dateString: string): void;
+    
     /**
     * Sets up Purchases with your API key and an app user id.
-    * @param {string} apiKey RevenueCat API Key. Needs to be a String
+    * @param {string} apiKey RevenueCat API Key. Needs to be a string
     * @param {string?} appUserID An optional unique id for identifying the user. Needs to be a string.
     * @param {boolean?} observerMode An optional boolean. Set this to TRUE if you have your own IAP implementation and want to use only RevenueCat's backend. Default is FALSE.
     * @returns {Promise<void>} Returns when setup completes
