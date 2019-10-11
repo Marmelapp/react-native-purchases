@@ -62,7 +62,7 @@ declare namespace Purchases {
      * Gets the map of entitlements -> offerings -> products
      * @returns {Promise<Map<String, Map<String, Product>>>} Promise of entitlements structure
      */
-    export function getEntitlements(): Promise<Map<string, Map<string, any>>>;
+    export function getEntitlements(): Promise<any>;
 
     /**
     * Fetch the product info
