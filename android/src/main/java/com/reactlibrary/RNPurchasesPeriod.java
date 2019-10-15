@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.reactlibrarypurchases;
 
 import androidx.annotation.NonNull;
 

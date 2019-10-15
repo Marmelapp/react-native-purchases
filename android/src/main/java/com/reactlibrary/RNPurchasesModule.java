@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.reactlibrarypurchases;
 
 import android.app.Activity;
 import android.util.Log;

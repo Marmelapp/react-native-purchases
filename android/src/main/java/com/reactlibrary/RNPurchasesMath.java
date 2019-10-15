@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.reactlibrarypurchases;
 
 // The functionality of this class has been extracted from Java 8 Math class
 class RNPurchasesMath {
